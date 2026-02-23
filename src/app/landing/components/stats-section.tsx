@@ -1,9 +1,9 @@
 "use client"
 
 import {
-  Package,
-  Download,
+  Trophy,
   Users,
+  UserRound,
   Star
 } from 'lucide-react'
 import { Card, CardContent } from '@/components/ui/card'
@@ -12,28 +12,28 @@ import { DotPattern } from '@/components/dot-pattern'
 
 const stats = [
   {
-    icon: Package,
-    value: '500+',
-    label: 'Components',
-    description: 'Ready-to-use blocks'
-  },
-  {
-    icon: Download,
-    value: '25K+',
-    label: 'Downloads',
-    description: 'Trusted worldwide'
+    icon: Trophy,
+    value: '2,000+',
+    label: 'Tournaments',
+    description: 'Successfully managed'
   },
   {
     icon: Users,
-    value: '10K+',
-    label: 'Developers',
-    description: 'Active community'
+    value: '10,000+',
+    label: 'Teams',
+    description: 'Registered across Uganda'
+  },
+  {
+    icon: UserRound,
+    value: '100,000+',
+    label: 'Players',
+    description: 'Tracked and profiled'
   },
   {
     icon: Star,
     value: '4.9',
     label: 'Rating',
-    description: 'User satisfaction'
+    description: 'Organizer satisfaction'
   }
 ]
 
@@ -54,8 +54,8 @@ export function StatsSection() {
             >
               <CardContent className="p-6">
                 <div className="flex justify-center mb-4">
-                  <div className="p-3 bg-primary/10 rounded-xl">
-                    <stat.icon className="h-6 w-6 text-primary" />
+                  <div className="p-3 bg-secondary/10 rounded-xl">
+                    <stat.icon className="h-6 w-6 text-secondary" />
                   </div>
                 </div>
                 <div className="space-y-1">

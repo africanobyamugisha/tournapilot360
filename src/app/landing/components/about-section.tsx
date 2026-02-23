@@ -1,31 +1,32 @@
 "use client"
 
+import Link from 'next/link'
 import { Button } from '@/components/ui/button'
 import { Badge } from '@/components/ui/badge'
 import { Card, CardContent } from '@/components/ui/card'
 import { CardDecorator } from '@/components/ui/card-decorator'
-import { Github, Code, Palette, Layout, Crown } from 'lucide-react'
+import { WifiOff, Smartphone, Wallet, Headphones } from 'lucide-react'
 
 const values = [
   {
-    icon: Code,
-    title: 'Developer First',
-    description: 'Every component is built with the developer experience in mind, ensuring clean code and easy integration.'
+    icon: WifiOff,
+    title: 'Works Offline',
+    description: 'Manage fixtures, record scores, and update standings even without an internet connection. Data syncs automatically when you reconnect.'
   },
   {
-    icon: Palette,
-    title: 'Design Excellence',
-    description: 'We maintain the highest design standards, following shadcn/ui principles and modern UI patterns.'
+    icon: Smartphone,
+    title: 'Mobile First',
+    description: 'Designed for Uganda\'s mobile-first reality. Works seamlessly on Android and low-end devices common at grassroots venues.'
   },
   {
-    icon: Layout,
-    title: 'Production Ready',
-    description: 'Battle-tested components used in real applications with proven performance and reliability across different environments.'
+    icon: Wallet,
+    title: 'Mobile Money Ready',
+    description: 'Accept tournament fees via MTN Mobile Money and Airtel Money. No bank account needed — pay and register from your phone.'
   },
   {
-    icon: Crown,
-    title: 'Premium Quality',
-    description: 'Hand-crafted with attention to detail and performance optimization, ensuring exceptional user experience and accessibility.'
+    icon: Headphones,
+    title: 'Local Support',
+    description: 'Our team is based in Uganda. Get support in English or Luganda via WhatsApp, phone, or in-person across major Ugandan cities.'
   }
 ]
 
@@ -35,19 +36,20 @@ export function AboutSection() {
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
         <div className="mx-auto max-w-4xl text-center mb-16">
-          <Badge variant="outline" className="mb-4">
-            About ShadcnStore
+          <Badge variant="outline" className="mb-4 border-secondary text-secondary">
+            About TournaPilot360
           </Badge>
           <h2 className="text-3xl font-bold tracking-tight sm:text-4xl mb-6">
-            Built for developers, by developers
+            Built for Uganda&apos;s sports community
           </h2>
           <p className="text-lg text-muted-foreground mb-8">
-            We&apos;re passionate about creating the best marketplace for shadcn/ui components and templates.
-            Our mission is to accelerate development and help developers build beautiful admin interfaces faster.
+            We understand the challenges of running tournaments in Uganda — unreliable internet,
+            cash-based payments, and tight budgets. TournaPilot360 was built from the ground up
+            to solve these real problems for local leagues, schools, and clubs.
           </p>
         </div>
 
-        {/* Modern Values Grid with Enhanced Design */}
+        {/* Values Grid */}
         <div className="grid grid-cols-1 gap-x-8 gap-y-12 sm:grid-cols-2 xl:grid-cols-4 mb-12">
           {values.map((value, index) => (
             <Card key={index} className='group shadow-xs py-2'>
@@ -67,18 +69,17 @@ export function AboutSection() {
         {/* Call to Action */}
         <div className="mt-16 text-center">
           <div className="flex items-center justify-center gap-2 mb-6">
-            <span className="text-muted-foreground">❤️ Made with love for the developer community</span>
+            <span className="text-muted-foreground">🇺🇬 Proudly built for Uganda&apos;s sports community</span>
           </div>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Button size="lg" className="cursor-pointer" asChild>
-              <a href="https://github.com/silicondeck/shadcn-dashboard-landing-template" target="_blank" rel="noopener noreferrer">
-                <Github className="mr-2 h-4 w-4" />
-                Star on GitHub
-              </a>
+              <Link href="/sign-up">
+                Create Your First Tournament
+              </Link>
             </Button>
             <Button size="lg" variant="outline" className="cursor-pointer" asChild>
-              <a href="https://discord.com/invite/XEQhPc9a6p" target="_blank" rel="noopener noreferrer">
-                Join Discord Community
+              <a href="#contact">
+                Talk to Our Team
               </a>
             </Button>
           </div>
