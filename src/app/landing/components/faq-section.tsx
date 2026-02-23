@@ -14,39 +14,51 @@ type FaqItem = {
 const faqItems: FaqItem[] = [
   {
     value: 'item-1',
-    question: 'How do I integrate ShadcnStore components into my project?',
+    question: 'Does TournaPilot360 work without internet?',
     answer:
-      'Integration is simple! All our components are built with shadcn/ui and work with React, Next.js, and Vite. Just copy the component code, install any required dependencies, and paste it into your project. Each component comes with detailed installation instructions and examples.',
+      'Yes — offline mode is a core feature. You can register teams, generate fixtures, record scores, and update standings with no internet connection. Once you\'re back online, everything syncs automatically to the cloud. This is designed specifically for Uganda\'s tournament venues where network coverage can be unreliable.',
   },
   {
     value: 'item-2',
-    question: 'What\'s the difference between free and premium components?',
+    question: 'How does mobile money payment work?',
     answer:
-      'Free components include essential UI elements like buttons, forms, and basic layouts. Premium components offer advanced features like complex data tables, analytics dashboards, authentication flows, and complete admin templates. Premium also includes Figma files, priority support, and commercial licenses.',
+      'Teams pay their registration fees directly via MTN Mobile Money or Airtel Money using a payment prompt sent to their phone. No bank account or debit card is needed. You receive instant confirmation and the team is automatically marked as registered. You can also manually record cash payments if needed.',
   },
   {
     value: 'item-3',
-    question: 'Can I use these components in commercial projects?',
+    question: 'Can I use it for school USSSA tournaments?',
     answer:
-      'Yes! Free components come with an MIT license for unlimited use. Premium components include a commercial license that allows usage in client projects, SaaS applications, and commercial products without attribution requirements.',
+      'Absolutely. TournaPilot360 is used by many USSSA-affiliated schools across Uganda for inter-school and inter-district competitions. The free Starter plan supports up to 8 teams, which covers most school cup formats. For larger USSSA-qualifying tournaments, the Standard plan (UGX 50,000) handles up to 32 teams with group stages and knockout rounds.',
   },
   {
     value: 'item-4',
-    question: 'Do you provide support and updates?',
+    question: 'How many teams can I register per tournament?',
     answer:
-      'Absolutely! We provide community support for free components through our Discord server and GitHub issues. Premium subscribers get priority email support, regular component updates, and early access to new releases. We also maintain compatibility with the latest shadcn/ui versions.',
+      'The free Starter plan supports up to 8 teams. The Standard plan (UGX 50,000 per tournament) supports up to 32 teams. The Pro plan (UGX 120,000 per tournament) supports unlimited teams. All plans include automatic fixture generation regardless of team count.',
   },
   {
     value: 'item-5',
-    question: 'What frameworks and tools do you support?',
+    question: 'What sports and tournament formats are supported?',
     answer:
-      'Our components work with React 18+, Next.js 13+, and Vite. We use TypeScript, Tailwind CSS, and follow shadcn/ui conventions. Components are tested with popular tools like React Hook Form, TanStack Query, and Zustand for state management.',
+      'TournaPilot360 supports football, basketball, volleyball, netball, rugby, and other team sports. Tournament formats include round-robin (league), single elimination (knockout), group stages with knockout, and double elimination. You can configure group sizes, points systems, and tiebreaker rules to match your specific competition structure.',
   },
   {
     value: 'item-6',
-    question: 'How often do you release new components?',
+    question: 'How do teams and players get their match schedules?',
     answer:
-      'We release new components and templates weekly. Premium subscribers get early access to new releases, while free components are updated regularly based on community feedback. You can track our roadmap and request specific components through our GitHub repository.',
+      'Once you publish a tournament, teams receive their fixture schedules automatically via WhatsApp and SMS. Your tournament also gets a public shareable link (e.g. tournapilot360.ug/t/your-tournament) that anyone can view to see fixtures, live scores, and standings — no app download required.',
+  },
+  {
+    value: 'item-7',
+    question: 'Is my tournament data safe and private?',
+    answer:
+      'Yes. All data is stored securely on cloud servers. You control what is public (standings, fixtures) and what is private (player contact details, payment records). We do not share or sell your data. You can export all your tournament data at any time.',
+  },
+  {
+    value: 'item-8',
+    question: 'Can multiple people manage the same tournament?',
+    answer:
+      'Yes — the Pro plan includes multi-admin access. You can assign roles to co-organisers, referees, and team managers. Referees can record scores from their phones, team managers can update their squad, and you retain full control as the tournament owner.',
   },
 ]
 
@@ -56,12 +68,13 @@ const FaqSection = () => {
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
         <div className="mx-auto max-w-2xl text-center mb-16">
-          <Badge variant="outline" className="mb-4">FAQ</Badge>
+          <Badge variant="outline" className="mb-4 border-secondary text-secondary">FAQ</Badge>
           <h2 className="text-3xl font-bold tracking-tight sm:text-4xl mb-4">
             Frequently Asked Questions
           </h2>
           <p className="text-lg text-muted-foreground">
-            Everything you need to know about ShadcnStore components, licensing, and integration. Still have questions? We&apos;re here to help!
+            Everything you need to know about running your tournament with TournaPilot360.
+            Still have questions? Our team is here to help.
           </p>
         </div>
 
@@ -74,7 +87,7 @@ const FaqSection = () => {
                   <AccordionItem key={item.value} value={item.value} className='rounded-md !border bg-transparent'>
                     <AccordionTrigger className='cursor-pointer items-center gap-4 rounded-none bg-transparent py-2 ps-3 pe-4 hover:no-underline data-[state=open]:border-b'>
                       <div className='flex items-center gap-4'>
-                        <div className='bg-primary/10 text-primary flex size-9 shrink-0 items-center justify-center rounded-full'>
+                        <div className='bg-secondary/10 text-secondary flex size-9 shrink-0 items-center justify-center rounded-full'>
                           <CircleHelp className='size-5' />
                         </div>
                         <span className='text-start font-semibold'>{item.question}</span>
@@ -90,11 +103,11 @@ const FaqSection = () => {
           {/* Contact Support CTA */}
           <div className="text-center mt-12">
             <p className="text-muted-foreground mb-4">
-              Still have questions? We&apos;re here to help.
+              Still have questions? We&apos;re here to help via WhatsApp or email.
             </p>
             <Button className='cursor-pointer' asChild>
               <a href="#contact">
-                Contact Support
+                Contact Our Team
               </a>
             </Button>
           </div>

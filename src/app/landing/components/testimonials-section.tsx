@@ -1,95 +1,95 @@
 "use client"
 
 import { Card, CardContent } from '@/components/ui/card'
-import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar'
+import { Avatar, AvatarFallback } from '@/components/ui/avatar'
 import { Badge } from '@/components/ui/badge'
 
 type Testimonial = {
   name: string
   role: string
-  image: string
+  initials: string
   quote: string
 }
 
 const testimonials: Testimonial[] = [
   {
-    name: 'Alexandra Mitchell',
-    role: 'Senior Frontend Developer',
-    image: 'https://notion-avatars.netlify.app/api/avatar?preset=female-1',
+    name: 'Kagaba Samuel',
+    role: 'Tournament Director, Kampala Rugby Club',
+    initials: 'KS',
     quote:
-      'This platform has completely transformed our development workflow. The component system is so well-architected that even complex applications feel simple to build.',
+      'We used to spend a whole weekend just making the fixture schedule. With TournaPilot360, the system generated all 30 fixtures in under a minute. Our referees love the live scoring feature.',
   },
   {
-    name: 'James Thompson',
-    role: 'Technical Lead',
-    image: 'https://notion-avatars.netlify.app/api/avatar?preset=male-1',
-    quote: 'After trying countless frameworks, this is the one that finally clicked. The documentation is exceptional.',
+    name: 'Nakato Jenipher',
+    role: 'Secretary, Old Budonians FC',
+    initials: 'NJ',
+    quote: 'Parents can follow their children\'s results on the public page without being at the pitch. That alone made it worth it for our school cup.',
   },
   {
-    name: 'Priya Sharma',
-    role: 'Product Designer',
-    image: 'https://notion-avatars.netlify.app/api/avatar?preset=female-2',
+    name: 'Muwonge David',
+    role: 'Sports Coordinator, USSSA Wakiso',
+    initials: 'MD',
     quote:
-      'The design system is beautiful and consistent. I can prototype ideas quickly and hand them off to developers with confidence that the implementation will match perfectly.',
+      'Our tournament venue at Kawempe has very poor network. TournaPilot360\'s offline mode was a lifesaver — we scored all our matches and everything synced once we got back to town.',
   },
   {
-    name: 'Robert Kim',
-    role: 'Engineering Manager',
-    image: 'https://notion-avatars.netlify.app/api/avatar?preset=male-2',
+    name: 'Asiimwe Grace',
+    role: 'League Organiser, Western Uganda Basketball',
+    initials: 'AG',
     quote:
-      'We migrated our entire application to this platform in just two weeks. The performance improvements were immediate.',
+      'Collecting registration fees used to be the hardest part. Now teams just pay via MTN Mobile Money directly through the system. We get notified instantly and the team is registered automatically.',
   },
   {
-    name: 'Maria Santos',
-    role: 'Full Stack Engineer',
-    image: 'https://notion-avatars.netlify.app/api/avatar?preset=female-3',
+    name: 'Okello Michael',
+    role: 'Head Coach, Gulu Falcons FC',
+    initials: 'OM',
+    quote: 'Even our most tech-shy committee members can use it. The interface is simple and everything is in plain English. No technical training needed.',
+  },
+  {
+    name: 'Nabuuma Patricia',
+    role: 'Administrator, Kampala Corporate League',
+    initials: 'NP',
     quote:
-      'The accessibility features are top-notch. Building inclusive applications has never been easier. Every component follows best practices out of the box, and the automated testing suite ensures we maintain high accessibility standards throughout our development process.',
+      'The WhatsApp notifications are brilliant. Players get their fixture details automatically and we\'ve stopped getting dozens of calls asking "when do we play?" The whole tournament runs smoother now.',
   },
   {
-    name: 'Thomas Anderson',
-    role: 'Solutions Architect',
-    image: 'https://notion-avatars.netlify.app/api/avatar?preset=male-3',
-    quote: 'Scalability was our biggest concern, but this platform handles enterprise-level complexity with ease.',
-  },
-  {
-    name: 'Lisa Chang',
-    role: 'UX Researcher',
-    image: 'https://notion-avatars.netlify.app/api/avatar?preset=female-4',
+    name: 'Byamugisha Robert',
+    role: 'Deputy Principal, Ntare School',
+    initials: 'BR',
     quote:
-      'User testing results have been consistently positive since we adopted this platform. The user experience is intuitive and the performance is stellar. Our user satisfaction scores have increased by 40% since the migration.',
+      'We run the Ntare Weekend Cup every term for over 16 schools. TournaPilot360 handles the group stage and knockout rounds seamlessly. The public standings page is shared in all our school WhatsApp groups.',
   },
   {
-    name: 'Michael Foster',
-    role: 'DevOps Engineer',
-    image: 'https://notion-avatars.netlify.app/api/avatar?preset=male-4',
-    quote: 'Deployment and maintenance are a breeze. The platform integrates seamlessly with our CI/CD pipeline.',
+    name: 'Atim Florence',
+    role: 'Team Manager, Soroti United',
+    initials: 'AF',
+    quote: 'I manage three different teams in separate tournaments. TournaPilot360 keeps everything in one place — I can switch between tournaments without confusion.',
   },
   {
-    name: 'Sophie Laurent',
-    role: 'Creative Director',
-    image: 'https://notion-avatars.netlify.app/api/avatar?preset=female-5',
+    name: 'Nsubuga Brian',
+    role: 'Events Coordinator, Makerere University Sports',
+    initials: 'NB',
     quote:
-      'The creative possibilities are endless. We can bring any design concept to life without compromising on technical quality or user experience.',
+      'We run inter-hall tournaments with 24 halls competing across four sports. The multi-format support and admin roles let our different sport coordinators manage their own tournaments under one account.',
   },
   {
-    name: 'Daniel Wilson',
-    role: 'Backend Developer',
-    image: 'https://notion-avatars.netlify.app/api/avatar?preset=male-5',
-    quote: 'The API design is exceptional. Clean, intuitive, and well-documented.',
+    name: 'Kyomugisha Ruth',
+    role: 'Chairperson, Mbarara Women\'s League',
+    initials: 'KR',
+    quote: 'The free plan was enough to get us started. Once we saw how well it worked, we upgraded for our main season tournament. Totally worth the UGX 50,000.',
   },
   {
-    name: 'Natasha Petrov',
-    role: 'Mobile App Developer',
-    image: 'https://notion-avatars.netlify.app/api/avatar?preset=female-6',
+    name: 'Ochieng James',
+    role: 'Referee Coordinator, FUFA Affiliate Club',
+    initials: 'OJ',
     quote:
-      'Cross-platform development has never been this efficient. One codebase, multiple platforms, consistent user experience. This is the future. The responsive design system ensures our apps look perfect on every device.',
+      'Our referees submit match reports from their phones right after the final whistle. Standings update in real-time — no waiting until Monday to know who leads the table.',
   },
   {
-    name: 'Carlos Rivera',
-    role: 'Startup Founder',
-    image: 'https://notion-avatars.netlify.app/api/avatar?preset=male-6',
-    quote: 'As a non-technical founder, this platform gave me the confidence to build our MVP quickly.',
+    name: 'Mugisha Caroline',
+    role: 'Team Captain, Kampala Ladies FC',
+    initials: 'MC',
+    quote: 'I finally feel like our women\'s league gets the same professional treatment as the men\'s. TournaPilot360 makes us look organised and serious.',
   },
 ]
 
@@ -99,12 +99,13 @@ export function TestimonialsSection() {
       <div className="container mx-auto px-8 sm:px-6">
         {/* Section Header */}
         <div className="mx-auto max-w-2xl text-center mb-16">
-          <Badge variant="outline" className="mb-4">Testimonials</Badge>
+          <Badge variant="outline" className="mb-4 border-secondary text-secondary">Testimonials</Badge>
           <h2 className="text-3xl font-bold tracking-tight sm:text-4xl mb-4">
-            Empowering Innovation Worldwide
+            Trusted by organisers across Uganda
           </h2>
           <p className="text-lg text-muted-foreground">
-            Join thousands of developers and teams who trust our platform to build exceptional digital experiences.
+            From school USSSA cups to professional leagues — hear what tournament organisers
+            across Uganda say about TournaPilot360.
           </p>
         </div>
 
@@ -114,26 +115,14 @@ export function TestimonialsSection() {
             <Card key={index} className="mb-6 break-inside-avoid shadow-none lg:mb-4">
               <CardContent>
                 <div className="flex items-start gap-4">
-                  <Avatar className="bg-muted size-12 shrink-0">
-                    <AvatarImage
-                      alt={testimonial.name}
-                      src={testimonial.image}
-                      loading="lazy"
-                      width="120"
-                      height="120"
-                    />
-                    <AvatarFallback>
-                      {testimonial.name
-                        .split(' ')
-                        .map(n => n[0])
-                        .join('')}
+                  <Avatar className="bg-secondary/10 size-12 shrink-0">
+                    <AvatarFallback className="text-secondary font-semibold text-sm">
+                      {testimonial.initials}
                     </AvatarFallback>
                   </Avatar>
 
                   <div className="min-w-0 flex-1">
-                    <a href="#" onClick={e => e.preventDefault()} className="cursor-pointer">
-                      <h3 className="font-medium hover:text-primary transition-colors">{testimonial.name}</h3>
-                    </a>
+                    <h3 className="font-medium">{testimonial.name}</h3>
                     <span className="text-muted-foreground block text-sm tracking-wide">
                       {testimonial.role}
                     </span>
