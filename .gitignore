@@ -89,5 +89,11 @@ storybook-static
 *.sln
 *.sw?
 
+# Docker
+postgres_data/
+
 # Deployment scripts (contain server-specific paths)
 *.env.production
+
+.pnpm-store
+.pnpm-store/
