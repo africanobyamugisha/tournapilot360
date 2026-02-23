@@ -1,65 +1,163 @@
 "use client"
 
+import Link from 'next/link'
 import {
-  BarChart3,
+  CalendarDays,
   Zap,
-  Users,
+  Globe,
+  LayoutList,
+  WifiOff,
+  Wallet,
+  Bell,
+  ShieldCheck,
   ArrowRight,
-  Database,
-  Package,
-  Crown,
-  Layout,
-  Palette
+  Clock,
+  CheckCircle2,
+  Circle,
 } from 'lucide-react'
 import { Button } from '@/components/ui/button'
 import { Badge } from '@/components/ui/badge'
-import { Image3D } from '@/components/image-3d'
+import { Card, CardContent } from '@/components/ui/card'
 
 const mainFeatures = [
   {
-    icon: Package,
-    title: 'Curated Component Library',
-    description: 'Hand-picked blocks and templates for quality and reliability.'
-  },
-  {
-    icon: Crown,
-    title: 'Free & Premium Options',
-    description: 'Start free, upgrade to premium collections when you need more.'
-  },
-  {
-    icon: Layout,
-    title: 'Ready-to-Use Templates',
-    description: 'Copy-paste components that just work out of the box.'
+    icon: CalendarDays,
+    title: 'Registration & Scheduling',
+    description: 'Teams register online or offline. Fixtures auto-generated in seconds.'
   },
   {
     icon: Zap,
-    title: 'Regular Updates',
-    description: 'New blocks and templates added weekly to keep you current.'
+    title: 'Live Scoring',
+    description: 'Record scores in real-time from any device, on or off the internet.'
+  },
+  {
+    icon: Globe,
+    title: 'Public Standings',
+    description: 'Shareable tournament page with live-updating standings for fans.'
+  },
+  {
+    icon: LayoutList,
+    title: 'Multi-Format Support',
+    description: 'Round-robin, knockout, group stages — all formats supported out of the box.'
   }
 ]
 
 const secondaryFeatures = [
   {
-    icon: BarChart3,
-    title: 'Multiple Frameworks',
-    description: 'React, Next.js, and Vite compatibility for flexible development.'
+    icon: WifiOff,
+    title: 'Offline Mode',
+    description: 'Full functionality without internet. Data syncs automatically when reconnected.'
   },
   {
-    icon: Palette,
-    title: 'Modern Tech Stack',
-    description: 'Built with shadcn/ui, Tailwind CSS, and TypeScript.'
+    icon: Wallet,
+    title: 'Mobile Money',
+    description: 'MTN & Airtel payments built in. No bank account or card required.'
   },
   {
-    icon: Users,
-    title: 'Responsive Design',
-    description: 'Mobile-first components for all screen sizes and devices.'
+    icon: Bell,
+    title: 'Notifications',
+    description: 'WhatsApp and SMS alerts for match schedules, results, and changes.'
   },
   {
-    icon: Database,
-    title: 'Developer-Friendly',
-    description: 'Clean code, well-documented, easy integration and customization.'
+    icon: ShieldCheck,
+    title: 'Admin Controls',
+    description: 'Role-based access — organizers, referees, and team managers in one system.'
   }
 ]
+
+// Mock fixture schedule UI
+function MockFixtureCard() {
+  const fixtures = [
+    { time: '10:00', home: 'Ntare Lions', away: 'Kibuli FC', status: 'FT', score: '2–1' },
+    { time: '12:00', home: 'Old Budonians', away: 'Kampala Corp', status: 'Live', score: '1–0' },
+    { time: '14:00', home: 'Vipers Youth', away: 'Kobs RFC', status: 'Upcoming', score: null },
+  ]
+
+  return (
+    <div className="relative rounded-xl border bg-card shadow-2xl overflow-hidden">
+      {/* Glow */}
+      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[70%] h-20 bg-secondary/20 rounded-full blur-3xl" />
+      <div className="relative p-4 sm:p-6 space-y-3">
+        <div className="flex items-center justify-between mb-2">
+          <span className="font-semibold text-sm">Round 3 — Fixture Schedule</span>
+          <Badge variant="outline" className="text-xs">Sat 15 Mar</Badge>
+        </div>
+        {fixtures.map((f, i) => (
+          <Card key={i} className="bg-muted/40 border-0">
+            <CardContent className="p-3 flex items-center gap-3">
+              <span className="text-xs text-muted-foreground w-10 shrink-0">{f.time}</span>
+              <div className="flex-1 flex items-center justify-between gap-2 text-sm">
+                <span className="font-medium truncate">{f.home}</span>
+                <div className="flex items-center gap-1.5 shrink-0">
+                  {f.score ? (
+                    <span className="font-bold text-base tabular-nums">{f.score}</span>
+                  ) : (
+                    <span className="text-muted-foreground text-xs">vs</span>
+                  )}
+                </div>
+                <span className="font-medium truncate text-right">{f.away}</span>
+              </div>
+              <Badge
+                variant={f.status === 'Live' ? 'secondary' : 'outline'}
+                className={`text-xs shrink-0 ${f.status === 'Live' ? 'bg-secondary/10 text-secondary border-secondary/20' : ''}`}
+              >
+                {f.status === 'Live' && <span className="mr-1 h-1.5 w-1.5 rounded-full bg-secondary inline-block animate-pulse" />}
+                {f.status}
+              </Badge>
+            </CardContent>
+          </Card>
+        ))}
+      </div>
+      {/* Bottom fade */}
+      <div className="absolute bottom-0 left-0 w-full h-6 bg-gradient-to-b from-card/0 to-card/80 rounded-b-xl pointer-events-none" />
+    </div>
+  )
+}
+
+// Mock offline/sync UI
+function MockOfflineCard() {
+  const steps = [
+    { label: 'Match scored offline', done: true },
+    { label: 'Standings updated locally', done: true },
+    { label: 'Syncing to cloud…', done: false, active: true },
+    { label: 'Notifications sent via SMS', done: false },
+  ]
+
+  return (
+    <div className="relative rounded-xl border bg-card shadow-2xl overflow-hidden">
+      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[70%] h-20 bg-secondary/20 rounded-full blur-3xl" />
+      <div className="relative p-4 sm:p-6">
+        <div className="flex items-center justify-between mb-4">
+          <span className="font-semibold text-sm">Offline Sync Status</span>
+          <Badge variant="outline" className="text-xs gap-1">
+            <WifiOff className="h-3 w-3" /> Back Online
+          </Badge>
+        </div>
+        <div className="space-y-3">
+          {steps.map((step, i) => (
+            <div key={i} className="flex items-center gap-3">
+              {step.done ? (
+                <CheckCircle2 className="h-5 w-5 text-secondary shrink-0" />
+              ) : step.active ? (
+                <Clock className="h-5 w-5 text-secondary animate-spin shrink-0" />
+              ) : (
+                <Circle className="h-5 w-5 text-muted-foreground shrink-0" />
+              )}
+              <span className={`text-sm ${step.done ? 'text-foreground' : step.active ? 'text-secondary font-medium' : 'text-muted-foreground'}`}>
+                {step.label}
+              </span>
+            </div>
+          ))}
+        </div>
+        <div className="mt-4 pt-4 border-t">
+          <p className="text-xs text-muted-foreground">
+            3 matches scored offline · 2 standings updated · Syncing now
+          </p>
+        </div>
+      </div>
+    </div>
+  )
+}
 
 export function FeaturesSection() {
   return (
@@ -67,32 +165,30 @@ export function FeaturesSection() {
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
         <div className="mx-auto max-w-2xl text-center mb-16">
-          <Badge variant="outline" className="mb-4">Marketplace Features</Badge>
+          <Badge variant="outline" className="mb-4 border-secondary text-secondary">Platform Features</Badge>
           <h2 className="text-3xl font-bold tracking-tight sm:text-4xl mb-4">
-            Everything you need to build amazing web applications
+            Everything you need to run a tournament
           </h2>
           <p className="text-lg text-muted-foreground">
-            Our marketplace provides curated blocks, templates, landing pages, and admin dashboards to help you build professional applications faster than ever.
+            From registration to final whistle — TournaPilot360 handles fixtures, scoring,
+            standings, and payments so you can focus on the game.
           </p>
         </div>
 
         {/* First Feature Section */}
         <div className="grid items-center gap-12 lg:grid-cols-2 lg:gap-8 xl:gap-16 mb-24">
-          {/* Left Image */}
-          <Image3D
-            lightSrc="/feature-1-light.png"
-            darkSrc="/feature-1-dark.png"
-            alt="Analytics dashboard"
-            direction="left"
-          />
+          {/* Left: Mock UI */}
+          <MockFixtureCard />
+
           {/* Right Content */}
           <div className="space-y-6">
             <div className="space-y-4">
               <h3 className="text-2xl font-semibold tracking-tight text-balance sm:text-3xl">
-                Components that accelerate development
+                Run your tournament end-to-end
               </h3>
               <p className="text-muted-foreground text-base text-pretty">
-                Our curated marketplace offers premium blocks and templates designed to save time and ensure consistency across your admin projects.
+                Register teams, auto-generate fixtures, score matches live, and publish
+                standings — all from one dashboard designed for Ugandan tournament organizers.
               </p>
             </div>
 
@@ -100,7 +196,7 @@ export function FeaturesSection() {
               {mainFeatures.map((feature, index) => (
                 <li key={index} className="group hover:bg-accent/5 flex items-start gap-3 p-2 rounded-lg transition-colors">
                   <div className="mt-0.5 flex shrink-0 items-center justify-center">
-                    <feature.icon className="size-5 text-primary" aria-hidden="true" />
+                    <feature.icon className="size-5 text-secondary" aria-hidden="true" />
                   </div>
                   <div>
                     <h3 className="text-foreground font-medium">{feature.title}</h3>
@@ -111,15 +207,15 @@ export function FeaturesSection() {
             </ul>
 
             <div className="flex flex-col sm:flex-row gap-4 pe-4 pt-2">
-              <Button size="lg" className="cursor-pointer">
-                <a href="https://shadcnstore.com/templates" className='flex items-center'>
-                  Browse Templates
+              <Button size="lg" className="cursor-pointer" asChild>
+                <Link href="/sign-up" className='flex items-center'>
+                  Start for Free
                   <ArrowRight className="ms-2 size-4" aria-hidden="true" />
-                </a>
+                </Link>
               </Button>
-              <Button size="lg" variant="outline" className="cursor-pointer">
-                <a href="https://shadcnstore.com/blocks">
-                  View Components
+              <Button size="lg" variant="outline" className="cursor-pointer" asChild>
+                <a href="#pricing">
+                  View Pricing
                 </a>
               </Button>
             </div>
@@ -132,10 +228,11 @@ export function FeaturesSection() {
           <div className="space-y-6 order-2 lg:order-1">
             <div className="space-y-4">
               <h3 className="text-2xl font-semibold tracking-tight text-balance sm:text-3xl">
-                Built for modern development workflows
+                Built for Uganda&apos;s real conditions
               </h3>
               <p className="text-muted-foreground text-base text-pretty">
-                Every component follows best practices with TypeScript, responsive design, and clean code architecture that integrates seamlessly into your projects.
+                Sporadic internet, cash payments, and mobile-only users — we&apos;ve built
+                TournaPilot360 specifically for the challenges tournament organizers face across Uganda.
               </p>
             </div>
 
@@ -143,7 +240,7 @@ export function FeaturesSection() {
               {secondaryFeatures.map((feature, index) => (
                 <li key={index} className="group hover:bg-accent/5 flex items-start gap-3 p-2 rounded-lg transition-colors">
                   <div className="mt-0.5 flex shrink-0 items-center justify-center">
-                    <feature.icon className="size-5 text-primary" aria-hidden="true" />
+                    <feature.icon className="size-5 text-secondary" aria-hidden="true" />
                   </div>
                   <div>
                     <h3 className="text-foreground font-medium">{feature.title}</h3>
@@ -154,28 +251,24 @@ export function FeaturesSection() {
             </ul>
 
             <div className="flex flex-col sm:flex-row gap-4 pe-4 pt-2">
-              <Button size="lg" className="cursor-pointer">
-                <a href="#" className='flex items-center'>
-                  View Documentation
+              <Button size="lg" className="cursor-pointer" asChild>
+                <a href="#contact" className='flex items-center'>
+                  Talk to Our Team
                   <ArrowRight className="ms-2 size-4" aria-hidden="true" />
                 </a>
               </Button>
-              <Button size="lg" variant="outline" className="cursor-pointer">
-                <a href="https://github.com/silicondeck/shadcn-dashboard-landing-template" target="_blank" rel="noopener noreferrer">
-                  GitHub Repository
+              <Button size="lg" variant="outline" className="cursor-pointer" asChild>
+                <a href="#faq">
+                  Read FAQs
                 </a>
               </Button>
             </div>
           </div>
 
-          {/* Right Image */}
-          <Image3D
-            lightSrc="/feature-2-light.png"
-            darkSrc="/feature-2-dark.png"
-            alt="Performance dashboard"
-            direction="right"
-            className="order-1 lg:order-2"
-          />
+          {/* Right: Mock UI */}
+          <div className="order-1 lg:order-2">
+            <MockOfflineCard />
+          </div>
         </div>
       </div>
     </section>
