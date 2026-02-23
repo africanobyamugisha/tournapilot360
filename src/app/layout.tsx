@@ -3,6 +3,7 @@ import "./globals.css"
 
 import { ThemeProvider } from "@/components/theme-provider"
 import { SidebarConfigProvider } from "@/contexts/sidebar-context"
+import { SessionProvider } from "@/components/session-provider"
 import { inter } from "@/lib/fonts"
 
 export const metadata: Metadata = {
@@ -34,11 +35,13 @@ export default function RootLayout({
   return (
     <html lang="en" className={`${inter.variable} antialiased`} suppressHydrationWarning>
       <body className={inter.className}>
-        <ThemeProvider defaultTheme="light" storageKey="tournapilot360-theme">
-          <SidebarConfigProvider>
-            {children}
-          </SidebarConfigProvider>
-        </ThemeProvider>
+        <SessionProvider>
+          <ThemeProvider defaultTheme="light" storageKey="tournapilot360-theme">
+            <SidebarConfigProvider>
+              {children}
+            </SidebarConfigProvider>
+          </ThemeProvider>
+        </SessionProvider>
       </body>
     </html>
   )
