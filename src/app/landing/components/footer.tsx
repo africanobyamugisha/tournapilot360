@@ -3,6 +3,7 @@
 import { zodResolver } from "@hookform/resolvers/zod"
 import { useForm } from "react-hook-form"
 import { z } from "zod"
+import Link from 'next/link'
 import { Separator } from '@/components/ui/separator'
 import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
@@ -14,7 +15,7 @@ import {
   FormMessage,
 } from "@/components/ui/form"
 import { Logo } from '@/components/logo'
-import { Github, Twitter, Linkedin, Youtube, Heart } from 'lucide-react'
+import { Twitter, Facebook, Instagram, Heart, MessageCircle } from 'lucide-react'
 
 const newsletterSchema = z.object({
   email: z.string().email({
@@ -23,37 +24,36 @@ const newsletterSchema = z.object({
 })
 
 const footerLinks = {
-  product: [
+  platform: [
     { name: 'Features', href: '#features' },
     { name: 'Pricing', href: '#pricing' },
-    { name: 'API', href: '#api' },
-    { name: 'Documentation', href: '#docs' },
+    { name: 'FAQ', href: '#faq' },
+    { name: 'Sign Up Free', href: '/sign-up' },
+  ],
+  resources: [
+    { name: 'Help Centre', href: '#contact' },
+    { name: 'How It Works', href: '#features' },
+    { name: 'Offline Guide', href: '#faq' },
+    { name: 'Mobile Money', href: '#faq' },
   ],
   company: [
     { name: 'About', href: '#about' },
-    { name: 'Blog', href: '#blog' },
-    { name: 'Careers', href: '#careers' },
-    { name: 'Press', href: '#press' },
-  ],
-  resources: [
-    { name: 'Help Center', href: '#help' },
-    { name: 'Community', href: '#community' },
-    { name: 'Guides', href: '#guides' },
-    { name: 'Webinars', href: '#webinars' },
+    { name: 'Contact', href: '#contact' },
+    { name: 'Blog', href: '#' },
+    { name: 'Careers', href: '#' },
   ],
   legal: [
-    { name: 'Privacy', href: '#privacy' },
-    { name: 'Terms', href: '#terms' },
-    { name: 'Security', href: '#security' },
-    { name: 'Status', href: '#status' },
+    { name: 'Privacy Policy', href: '#' },
+    { name: 'Terms of Service', href: '#' },
+    { name: 'Cookie Policy', href: '#' },
   ],
 }
 
 const socialLinks = [
-  { name: 'Twitter', href: '#', icon: Twitter },
-  { name: 'GitHub', href: 'https://github.com/silicondeck/shadcn-dashboard-landing-template', icon: Github },
-  { name: 'LinkedIn', href: '#', icon: Linkedin },
-  { name: 'YouTube', href: '#', icon: Youtube },
+  { name: 'Twitter / X', href: '#', icon: Twitter },
+  { name: 'Facebook', href: '#', icon: Facebook },
+  { name: 'Instagram', href: '#', icon: Instagram },
+  { name: 'WhatsApp', href: 'https://wa.me/256700123456', icon: MessageCircle },
 ]
 
 export function LandingFooter() {
@@ -65,9 +65,7 @@ export function LandingFooter() {
   })
 
   function onSubmit(values: z.infer<typeof newsletterSchema>) {
-    // Here you would typically send the email to your newsletter service
     console.log(values)
-    // Show success message and reset form
     form.reset()
   }
 
@@ -77,9 +75,10 @@ export function LandingFooter() {
         {/* Newsletter Section */}
         <div className="mb-16">
           <div className="mx-auto max-w-2xl text-center">
-            <h3 className="text-2xl font-bold mb-4">Stay updated</h3>
+            <h3 className="text-2xl font-bold mb-4">Get tournament tips & updates</h3>
             <p className="text-muted-foreground mb-6">
-              Get the latest updates, articles, and resources sent to your inbox weekly.
+              Join Uganda&apos;s tournament organisers. Get tips on running better competitions,
+              new feature announcements, and local sports news.
             </p>
             <Form {...form}>
               <form onSubmit={form.handleSubmit(onSubmit)} className="flex flex-col gap-2 max-w-md mx-auto sm:flex-row">
@@ -110,13 +109,11 @@ export function LandingFooter() {
           {/* Brand Column */}
           <div className="col-span-4 lg:col-span-2 max-w-2xl">
             <div className="flex items-center space-x-2 mb-4 max-lg:justify-center">
-              <a href="https://shadcnstore.com" target='_blank' className="flex items-center space-x-2 cursor-pointer">
-                <Logo size={32} />
-                <span className="font-bold text-xl">ShadcnStore</span>
-              </a>
+              <Logo href="/landing" height={32} />
             </div>
             <p className="text-muted-foreground mb-6 max-lg:text-center max-lg:flex max-lg:justify-center">
-              Accelerating web development with curated blocks, templates, landing pages, and admin dashboards designed for modern developers.
+              Uganda&apos;s all-in-one tournament management system — offline ready, mobile money
+              enabled, and built for local leagues, schools, and clubs.
             </p>
             <div className="flex space-x-4 max-lg:justify-center">
               {socialLinks.map((social) => (
@@ -136,9 +133,34 @@ export function LandingFooter() {
 
           {/* Links Columns */}
           <div className='max-md:col-span-2 lg:col-span-1'>
-            <h4 className="font-semibold mb-4">Product</h4>
+            <h4 className="font-semibold mb-4">Platform</h4>
             <ul className="space-y-3">
-              {footerLinks.product.map((link) => (
+              {footerLinks.platform.map((link) => (
+                <li key={link.name}>
+                  {link.href.startsWith('/') ? (
+                    <Link
+                      href={link.href}
+                      className="text-muted-foreground hover:text-foreground transition-colors"
+                    >
+                      {link.name}
+                    </Link>
+                  ) : (
+                    <a
+                      href={link.href}
+                      className="text-muted-foreground hover:text-foreground transition-colors"
+                    >
+                      {link.name}
+                    </a>
+                  )}
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          <div className='max-md:col-span-2 lg:col-span-1'>
+            <h4 className="font-semibold mb-4">Resources</h4>
+            <ul className="space-y-3">
+              {footerLinks.resources.map((link) => (
                 <li key={link.name}>
                   <a
                     href={link.href}
@@ -156,28 +178,21 @@ export function LandingFooter() {
             <ul className="space-y-3">
               {footerLinks.company.map((link) => (
                 <li key={link.name}>
-                  <a
-                    href={link.href}
-                    className="text-muted-foreground hover:text-foreground transition-colors"
-                  >
-                    {link.name}
-                  </a>
-                </li>
-              ))}
-            </ul>
-          </div>
-
-          <div className='max-md:col-span-2 lg:col-span-1'>
-            <h4 className="font-semibold mb-4">Resources</h4>
-            <ul className="space-y-3">
-              {footerLinks.resources.map((link) => (
-                <li key={link.name}>
-                  <a
-                    href={link.href}
-                    className="text-muted-foreground hover:text-foreground transition-colors"
-                  >
-                    {link.name}
-                  </a>
+                  {link.href.startsWith('/') ? (
+                    <Link
+                      href={link.href}
+                      className="text-muted-foreground hover:text-foreground transition-colors"
+                    >
+                      {link.name}
+                    </Link>
+                  ) : (
+                    <a
+                      href={link.href}
+                      className="text-muted-foreground hover:text-foreground transition-colors"
+                    >
+                      {link.name}
+                    </a>
+                  )}
                 </li>
               ))}
             </ul>
@@ -208,22 +223,19 @@ export function LandingFooter() {
             <div className="flex items-center gap-1">
               <span>Made with</span>
               <Heart className="h-4 w-4 text-red-500 fill-current" />
-              <span>by</span>
-              <a href="https://shadcnstore.com" target='_blank' className="font-semibold text-foreground hover:text-primary transition-colors cursor-pointer">
-                ShadcnStore
-              </a>
+              <span>for Uganda&apos;s sports community</span>
             </div>
             <span className="hidden sm:inline">•</span>
-            <span>© {new Date().getFullYear()} for the developer community</span>
+            <span>© {new Date().getFullYear()} TournaPilot360. All rights reserved.</span>
           </div>
           <div className="flex items-center space-x-4 text-sm text-muted-foreground mt-4 md:mt-0">
-            <a href="#privacy" className="hover:text-foreground transition-colors">
+            <a href="#" className="hover:text-foreground transition-colors">
               Privacy Policy
             </a>
-            <a href="#terms" className="hover:text-foreground transition-colors">
+            <a href="#" className="hover:text-foreground transition-colors">
               Terms of Service
             </a>
-            <a href="#cookies" className="hover:text-foreground transition-colors">
+            <a href="#" className="hover:text-foreground transition-colors">
               Cookie Policy
             </a>
           </div>

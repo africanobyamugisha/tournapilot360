@@ -16,7 +16,7 @@ import {
   FormLabel,
   FormMessage,
 } from "@/components/ui/form"
-import { Mail, MessageCircle, Github, BookOpen } from 'lucide-react'
+import { Mail, MessageCircle, Phone, MapPin } from 'lucide-react'
 
 const contactFormSchema = z.object({
   firstName: z.string().min(2, {
@@ -49,9 +49,7 @@ export function ContactSection() {
   })
 
   function onSubmit(values: z.infer<typeof contactFormSchema>) {
-    // Here you would typically send the form data to your backend
     console.log(values)
-    // You could also show a success message or redirect
     form.reset()
   }
 
@@ -59,70 +57,74 @@ export function ContactSection() {
     <section id="contact" className="py-24 sm:py-32">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="mx-auto max-w-2xl text-center mb-16">
-          <Badge variant="outline" className="mb-4">Get In Touch</Badge>
+          <Badge variant="outline" className="mb-4 border-secondary text-secondary">Get In Touch</Badge>
           <h2 className="text-3xl font-bold tracking-tight sm:text-4xl mb-4">
-            Need help or have questions?
+            We&apos;re here to help
           </h2>
           <p className="text-lg text-muted-foreground">
-            Our team is here to help you get the most out of ShadcnStore. Choose the best way to reach out to us.
+            Our Uganda-based team responds quickly via WhatsApp, phone, or email.
+            We speak English and Luganda.
           </p>
         </div>
 
         <div className="grid gap-8 lg:grid-cols-3">
           {/* Contact Options */}
           <div className="space-y-6 order-2 lg:order-1">
-            <Card className="hover:shadow-md transition-shadow cursor-pointer">
+            <Card className="hover:shadow-md transition-shadow">
               <CardHeader>
                 <CardTitle className="flex items-center gap-2">
-                  <MessageCircle className="h-5 w-5 text-primary" />
-                  Discord Community
+                  <MessageCircle className="h-5 w-5 text-secondary" />
+                  WhatsApp Support
                 </CardTitle>
               </CardHeader>
               <CardContent>
                 <p className="text-muted-foreground mb-3">
-                  Join our active community for quick help and discussions with other developers.
+                  Chat with our team on WhatsApp — fastest way to get help, Mon–Sat 8am–8pm.
                 </p>
                 <Button variant="outline" size="sm" className="cursor-pointer" asChild>
-                  <a href="https://discord.com/invite/XEQhPc9a6p" target="_blank" rel="noopener noreferrer">
-                    Join Discord
+                  <a href="https://wa.me/256700123456" target="_blank" rel="noopener noreferrer">
+                    Chat on WhatsApp
                   </a>
                 </Button>
               </CardContent>
             </Card>
 
-            <Card className="hover:shadow-md transition-shadow cursor-pointer">
+            <Card className="hover:shadow-md transition-shadow">
               <CardHeader>
                 <CardTitle className="flex items-center gap-2">
-                  <Github className="h-5 w-5 text-primary" />
-                  GitHub Issues
+                  <Phone className="h-5 w-5 text-secondary" />
+                  Phone & SMS
                 </CardTitle>
               </CardHeader>
               <CardContent>
                 <p className="text-muted-foreground mb-3">
-                  Report bugs, request features, or contribute to our open source repository.
+                  Call or SMS us at <span className="font-medium text-foreground">+256 700 123 456</span> (MTN) or{' '}
+                  <span className="font-medium text-foreground">+256 750 123 456</span> (Airtel).
                 </p>
                 <Button variant="outline" size="sm" className="cursor-pointer" asChild>
-                  <a href="https://github.com/silicondeck/shadcn-dashboard-landing-template/issues" target="_blank" rel="noopener noreferrer">
-                    View on GitHub
+                  <a href="tel:+256700123456">
+                    Call Us
                   </a>
                 </Button>
               </CardContent>
             </Card>
 
-            <Card className="hover:shadow-md transition-shadow cursor-pointer">
+            <Card className="hover:shadow-md transition-shadow">
               <CardHeader>
                 <CardTitle className="flex items-center gap-2">
-                  <BookOpen className="h-5 w-5 text-primary" />
-                  Documentation
+                  <MapPin className="h-5 w-5 text-secondary" />
+                  Kampala Office
                 </CardTitle>
               </CardHeader>
               <CardContent>
                 <p className="text-muted-foreground mb-3">
-                  Browse our comprehensive guides, tutorials, and component documentation.
+                  Plot 15, Kampala Road, Kampala, Uganda.
+                  Walk-ins welcome Mon–Fri, 9am–5pm.
                 </p>
                 <Button variant="outline" size="sm" className="cursor-pointer" asChild>
-                  <a href="#">
-                    View Docs
+                  <a href="mailto:hello@tournapilot360.ug">
+                    <Mail className="mr-1.5 h-3.5 w-3.5" />
+                    Email Us
                   </a>
                 </Button>
               </CardContent>
@@ -149,7 +151,7 @@ export function ContactSection() {
                           <FormItem>
                             <FormLabel>First name</FormLabel>
                             <FormControl>
-                              <Input placeholder="John" {...field} />
+                              <Input placeholder="Kagaba" {...field} />
                             </FormControl>
                             <FormMessage />
                           </FormItem>
@@ -162,7 +164,7 @@ export function ContactSection() {
                           <FormItem>
                             <FormLabel>Last name</FormLabel>
                             <FormControl>
-                              <Input placeholder="Doe" {...field} />
+                              <Input placeholder="Samuel" {...field} />
                             </FormControl>
                             <FormMessage />
                           </FormItem>
@@ -176,7 +178,7 @@ export function ContactSection() {
                         <FormItem>
                           <FormLabel>Email</FormLabel>
                           <FormControl>
-                            <Input type="email" placeholder="john@example.com" {...field} />
+                            <Input type="email" placeholder="kagaba@example.com" {...field} />
                           </FormControl>
                           <FormMessage />
                         </FormItem>
@@ -189,7 +191,7 @@ export function ContactSection() {
                         <FormItem>
                           <FormLabel>Subject</FormLabel>
                           <FormControl>
-                            <Input placeholder="Component request, bug report, general inquiry..." {...field} />
+                            <Input placeholder="Tournament setup, billing question, feature request..." {...field} />
                           </FormControl>
                           <FormMessage />
                         </FormItem>
@@ -203,7 +205,7 @@ export function ContactSection() {
                           <FormLabel>Message</FormLabel>
                           <FormControl>
                             <Textarea
-                              placeholder="Tell us how we can help you with ShadcnStore components..."
+                              placeholder="Tell us about your tournament — sport, number of teams, and how we can help..."
                               rows={10}
                               className="min-h-50"
                               {...field}
