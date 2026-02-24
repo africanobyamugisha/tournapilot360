@@ -102,6 +102,15 @@ ${colorConfig
 
 const ChartTooltip = RechartsPrimitive.Tooltip
 
+type ChartPayloadItem = {
+  dataKey?: string | number
+  name?: string | number
+  value?: string | number | Array<string | number>
+  color?: string
+  payload?: { fill?: string; [key: string]: unknown }
+  [key: string]: unknown
+}
+
 function ChartTooltipContent({
   active,
   payload,
@@ -116,25 +125,20 @@ function ChartTooltipContent({
   color,
   nameKey,
   labelKey,
-}: React.ComponentProps<typeof RechartsPrimitive.Tooltip> &
-  React.ComponentProps<"div"> & {
-    hideLabel?: boolean
-    hideIndicator?: boolean
-    indicator?: "line" | "dot" | "dashed"
-    nameKey?: string
-    labelKey?: string
-    payload?: Array<{
-      dataKey?: string | number
-      name?: string | number
-      value?: string | number | Array<string | number>
-      color?: string
-      payload?: Record<string, unknown>
-      [key: string]: unknown
-    }>
-    label?: string | number
-    labelFormatter?: (label: string | number, payload: unknown[]) => React.ReactNode
-    formatter?: (value: unknown, name: unknown, item: unknown, index: number, payload: unknown) => React.ReactNode
-  }) {
+}: React.ComponentProps<"div"> & {
+  active?: boolean
+  payload?: ChartPayloadItem[]
+  label?: string | number
+  labelFormatter?: (label: React.ReactNode, payload: ChartPayloadItem[]) => React.ReactNode
+  labelClassName?: string
+  formatter?: (value: unknown, name: unknown, item: ChartPayloadItem, index: number, payload: { fill?: string }) => React.ReactNode
+  hideLabel?: boolean
+  hideIndicator?: boolean
+  indicator?: "line" | "dot" | "dashed"
+  color?: string
+  nameKey?: string
+  labelKey?: string
+}) {
   const { config } = useChart()
 
   const tooltipLabel = React.useMemo(() => {
