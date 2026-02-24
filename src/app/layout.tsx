@@ -5,6 +5,7 @@ import { ThemeProvider } from "@/components/theme-provider"
 import { SidebarConfigProvider } from "@/contexts/sidebar-context"
 import { SessionProvider } from "@/components/session-provider"
 import { inter } from "@/lib/fonts"
+import { Toaster } from "@/components/ui/sonner"
 
 export const metadata: Metadata = {
   title: "TournaPilot360 — Tournament Management System for Uganda",
@@ -39,6 +40,7 @@ export default function RootLayout({
           <ThemeProvider defaultTheme="light" storageKey="tournapilot360-theme">
             <SidebarConfigProvider>
               {children}
+              <Toaster richColors />
             </SidebarConfigProvider>
           </ThemeProvider>
         </SessionProvider>

@@ -21,7 +21,7 @@ async function getDashboardStats(userId: string) {
       prisma.tournament.count({
         where: {
           organizerId: userId,
-          status: { in: [TournamentStatus.ACTIVE, TournamentStatus.REGISTRATION] },
+          status: { in: [TournamentStatus.IN_PROGRESS, TournamentStatus.REGISTRATION_OPEN] },
         },
       }),
       prisma.team.count({
@@ -54,10 +54,20 @@ async function getRecentTournaments(userId: string) {
 
 const statusColors: Record<TournamentStatus, string> = {
   DRAFT: "bg-muted text-muted-foreground",
-  REGISTRATION: "bg-blue-100 text-blue-700 dark:bg-blue-900/30 dark:text-blue-400",
-  ACTIVE: "bg-secondary/10 text-secondary",
+  REGISTRATION_OPEN: "bg-blue-100 text-blue-700 dark:bg-blue-900/30 dark:text-blue-400",
+  REGISTRATION_CLOSED: "bg-yellow-100 text-yellow-700 dark:bg-yellow-900/30 dark:text-yellow-400",
+  IN_PROGRESS: "bg-secondary/10 text-secondary",
   COMPLETED: "bg-green-100 text-green-700 dark:bg-green-900/30 dark:text-green-400",
   CANCELLED: "bg-red-100 text-red-700 dark:bg-red-900/30 dark:text-red-400",
+}
+
+const statusLabels: Record<TournamentStatus, string> = {
+  DRAFT: "Draft",
+  REGISTRATION_OPEN: "Registration Open",
+  REGISTRATION_CLOSED: "Registration Closed",
+  IN_PROGRESS: "In Progress",
+  COMPLETED: "Completed",
+  CANCELLED: "Cancelled",
 }
 
 export default async function DashboardPage() {
@@ -208,10 +218,10 @@ export default async function DashboardPage() {
                     <Badge
                       className={`text-xs border-0 ${statusColors[tournament.status]}`}
                     >
-                      {tournament.status === "ACTIVE" && (
+                      {tournament.status === "IN_PROGRESS" && (
                         <TrendingUp className="mr-1 h-3 w-3" />
                       )}
-                      {tournament.status}
+                      {statusLabels[tournament.status]}
                     </Badge>
                     <Button
                       variant="ghost"
