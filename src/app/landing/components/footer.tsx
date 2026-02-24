@@ -39,8 +39,6 @@ const footerLinks = {
   company: [
     { name: 'About', href: '#about' },
     { name: 'Contact', href: '#contact' },
-    { name: 'Blog', href: '#' },
-    { name: 'Careers', href: '#' },
   ],
   legal: [
     { name: 'Privacy Policy', href: '#' },
@@ -53,7 +51,7 @@ const socialLinks = [
   { name: 'Twitter / X', href: '#', icon: Twitter },
   { name: 'Facebook', href: '#', icon: Facebook },
   { name: 'Instagram', href: '#', icon: Instagram },
-  { name: 'WhatsApp', href: 'https://wa.me/256700123456', icon: MessageCircle },
+  { name: 'WhatsApp', href: 'https://wa.me/256706107619', icon: MessageCircle },
 ]
 
 export function LandingFooter() {

@@ -16,7 +16,7 @@ const faqItems: FaqItem[] = [
     value: 'item-1',
     question: 'Does TournaPilot360 work without internet?',
     answer:
-      'Yes — offline mode is a core feature. You can register teams, generate fixtures, record scores, and update standings with no internet connection. Once you\'re back online, everything syncs automatically to the cloud. This is designed specifically for Uganda\'s tournament venues where network coverage can be unreliable.',
+      'Offline mode is on our near-term roadmap. The platform is built mobile-first and designed for low-bandwidth environments — you can manage your entire tournament from a basic smartphone browser. Full offline support with local storage and background sync is coming soon, specifically for Uganda\'s tournament venues where network coverage can be unreliable.',
   },
   {
     value: 'item-2',
@@ -40,13 +40,13 @@ const faqItems: FaqItem[] = [
     value: 'item-5',
     question: 'What sports and tournament formats are supported?',
     answer:
-      'TournaPilot360 supports football, basketball, volleyball, netball, rugby, and other team sports. Tournament formats include round-robin (league), single elimination (knockout), group stages with knockout, and double elimination. You can configure group sizes, points systems, and tiebreaker rules to match your specific competition structure.',
+      'TournaPilot360 supports football, basketball, volleyball, netball, rugby, cricket, athletics, and other sports. Tournament formats include round-robin (league), single elimination (knockout), and group stages with knockout. You can configure points systems and tiebreaker rules to match your specific competition structure. Additional formats like double elimination and Swiss system are on our roadmap.',
   },
   {
     value: 'item-6',
     question: 'How do teams and players get their match schedules?',
     answer:
-      'Once you publish a tournament, teams receive their fixture schedules automatically via WhatsApp and SMS. Your tournament also gets a public shareable link (e.g. tournapilot360.ug/t/your-tournament) that anyone can view to see fixtures, live scores, and standings — no app download required.',
+      'Every tournament gets a public shareable link (e.g. tournapilot360.vercel.app/t/your-tournament) that anyone can view to see fixtures, live scores, and standings — no app download or login required. WhatsApp and SMS notifications for automatic schedule delivery are coming soon.',
   },
   {
     value: 'item-7',
