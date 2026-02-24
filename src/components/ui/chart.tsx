@@ -1,6 +1,5 @@
 import * as React from "react"
 import * as RechartsPrimitive from "recharts"
-import type { TooltipProps } from "recharts"
 
 import { cn } from "@/lib/utils"
 
@@ -124,10 +123,18 @@ function ChartTooltipContent({
     indicator?: "line" | "dot" | "dashed"
     nameKey?: string
     labelKey?: string
-  } & Pick<
-    TooltipProps<string | number, string>,
-    "payload" | "label" | "labelFormatter" | "formatter"
-  >) {
+    payload?: Array<{
+      dataKey?: string | number
+      name?: string | number
+      value?: string | number | Array<string | number>
+      color?: string
+      payload?: Record<string, unknown>
+      [key: string]: unknown
+    }>
+    label?: string | number
+    labelFormatter?: (label: string | number, payload: unknown[]) => React.ReactNode
+    formatter?: (value: unknown, name: unknown, item: unknown, index: number, payload: unknown) => React.ReactNode
+  }) {
   const { config } = useChart()
 
   const tooltipLabel = React.useMemo(() => {
