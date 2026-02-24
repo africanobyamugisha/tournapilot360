@@ -124,8 +124,10 @@ function ChartTooltipContent({
     indicator?: "line" | "dot" | "dashed"
     nameKey?: string
     labelKey?: string
-    payload?: TooltipProps<string | number, string>["payload"]
-  }) {
+  } & Pick<
+    TooltipProps<string | number, string>,
+    "payload" | "label" | "labelFormatter" | "formatter"
+  >) {
   const { config } = useChart()
 
   const tooltipLabel = React.useMemo(() => {
