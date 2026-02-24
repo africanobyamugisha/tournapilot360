@@ -151,10 +151,6 @@ const STATUS_TRANSITIONS: Partial<Record<TournamentStatus, TournamentStatus[]>> 
   IN_PROGRESS: [TournamentStatus.COMPLETED, TournamentStatus.CANCELLED],
 }
 
-export function getAllowedTransitions(current: TournamentStatus): TournamentStatus[] {
-  return STATUS_TRANSITIONS[current] ?? []
-}
-
 export async function updateTournamentStatus(
   tournamentId: string,
   newStatus: TournamentStatus
