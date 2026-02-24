@@ -18,8 +18,7 @@ import {
   FormLabel,
   FormMessage,
 } from "@/components/ui/form"
-import { Separator } from "@/components/ui/separator"
-import { Trophy, Chrome } from "lucide-react"
+import { Trophy } from "lucide-react"
 
 const signInSchema = z.object({
   email: z.string().email({ message: "Please enter a valid email address." }),
@@ -68,11 +67,6 @@ function SignInForm() {
     router.refresh()
   }
 
-  async function handleGoogleSignIn() {
-    setIsLoading(true)
-    await signIn("google", { callbackUrl })
-  }
-
   return (
     <Card className="w-full max-w-md shadow-lg">
       <CardHeader className="text-center pb-2">
@@ -88,24 +82,6 @@ function SignInForm() {
       </CardHeader>
 
       <CardContent className="space-y-4">
-        {/* Google Sign In */}
-        <Button
-          variant="outline"
-          className="w-full cursor-pointer"
-          onClick={handleGoogleSignIn}
-          disabled={isLoading}
-        >
-          <Chrome className="mr-2 h-4 w-4" />
-          Continue with Google
-        </Button>
-
-        <div className="relative">
-          <Separator />
-          <span className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 bg-card px-2 text-xs text-muted-foreground">
-            or
-          </span>
-        </div>
-
         {/* Error message */}
         {error && (
           <p className="text-sm text-destructive text-center bg-destructive/10 rounded-md py-2 px-3">

@@ -98,11 +98,10 @@ export function ContactSection() {
               </CardHeader>
               <CardContent>
                 <p className="text-muted-foreground mb-3">
-                  Call or SMS us at <span className="font-medium text-foreground">+256 700 123 456</span> (MTN) or{' '}
-                  <span className="font-medium text-foreground">+256 750 123 456</span> (Airtel).
+                  Call or SMS us at <span className="font-medium text-foreground">+256 706 107 619</span>.
                 </p>
                 <Button variant="outline" size="sm" className="cursor-pointer" asChild>
-                  <a href="tel:+256700123456">
+                  <a href="tel:+256706107619">
                     Call Us
                   </a>
                 </Button>
